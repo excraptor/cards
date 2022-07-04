@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct CardsApp: App {
+    
+    @StateObject private var dataController = DataController.instance
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView().environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }
